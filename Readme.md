@@ -25,6 +25,19 @@ they have given me information about the application and how it should work, i h
 
 ## Helm Chart.
 
+## Images
+  - jmcglobal/track-tracker:release1, release2, release3
+  
+  - jmcglobal/track-webapp:release1, release2
+  
+  - jmcglobal/track-simulator:release1, release2
+  
+  - jmcglobal/track-api:release1, release2
+  
+  - jmcglobal/track-queue:release1
+  
+  - mongo:3.6.5-jessie
+
 ## Name of Application:
 - Delivery management system
 
