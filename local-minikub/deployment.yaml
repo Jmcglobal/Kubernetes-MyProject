@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: jmcglobal/track-webapp:release2
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: queue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      web: queue
+  template:
+    metadata:
+      labels:
+        web: queue
+    spec:
+      containers:
+      - name: queue
+        image: jmcglobal/track-queue:release2
+
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-simulator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: position-simulator
+  template:
+    metadata:
+      labels:
+        app: position-simulator
+    spec:
+      containers:
+      - name: position-simulator
+        image: jmcglobal/track-simulator:release2
+
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: position-tracker
+spec:
+  selector:
+    matchLabels:
+      app: position-tracker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: position-tracker
+    spec:
+      containers:
+      - name: position-tracker
+        image: jmcglobal/track-tracker:release3
+
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  selector:
+    matchLabels:
+      app: api-gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: jmcglobal/track-api:release2
+
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
