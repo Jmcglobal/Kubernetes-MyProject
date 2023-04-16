@@ -4,8 +4,8 @@
 - Kubernetes using EKS, refer to EKS directory
 
 ## PROJECT DESCRIPTION
-This projects is a microservice application, developed by group of software engineers, containerised and available on dockerhub.
-they have given me information about the application and how it should work, i have containerised the application with docker and pushed it to dockerhub, i will use kubernetes to test and deploy the and also configure the following..
+This projects is a microservice application, developed by group of software engineers, and its available on Github, As a Devops Engineer i will be responsible for containerizing, testing and deploying the applications, configure security, scale and monitor over all performance.
+they have given me information about the application and how it should work, i have containerised the application with docker and pushed it to dockerhub/aws ecr, i will use kubernetes to test and deploy the and also configure the following..
 
 ## KOPS Deployment
 
@@ -39,6 +39,10 @@ they have given me information about the application and how it should work, i h
   - mongo:3.6.5-jessie
 
 ## Name of Application:
-- Delivery management system
+- Tracking Management system
+
+![kubernetes](https://user-images.githubusercontent.com/101070055/232293027-73c3b171-b1ae-48cc-865c-583f8e2fad54.png)
+
+
 
 
