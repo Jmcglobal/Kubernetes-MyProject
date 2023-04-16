@@ -34,7 +34,7 @@ Therefore i have used an EC2 instance as bootstrap server.
 
 ## Installing kops on ubuntu
 
-            curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s                                           https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-                   linux-amd64
+            curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl  -s  https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
             chmod +x kops
             sudo mv kops /usr/local/bin/kops
 
