@@ -12,3 +12,28 @@
 - Persistent Volume
 - Persistent Volume claim
  
+## local testing with minikube.
+
+Prerequisite
+
+        Docker engine 
+        kubectl
+        minikube 
+
+Host machine prerequisite
+
+        minimum of 2cpu
+        minimum of 4gb memory
+        Update your linux terminal package managers
+
+Install docker.
+
+        sudo apt install docker.io
+
+install minikube 
+
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+Install Kubectl
+
