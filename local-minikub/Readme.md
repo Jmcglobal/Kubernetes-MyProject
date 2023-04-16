@@ -65,10 +65,24 @@ Basic Kubectl Commands to diagonise and troubleshhot
       
 Deployment Basic kubectl commands
 
-   kubectl apply -f .   >> apply every yaml file on the current directory to kubernetes
-   kubectl apply -f <yaml file>  
-   kubectl delete -f . >> delete from kubernetes every configuration on yaml file
-   kubectl delete -f <yaml file> apply per yaml file
+       kubectl apply -f .   >> apply every yaml file on the current directory to kubernetes
+       kubectl apply -f <yaml file>  
+       kubectl delete -f . >> delete from kubernetes every configuration on yaml file
+       kubectl delete -f <yaml file> apply per yaml file
 
-`
+# Overview of the microservice
+ 
+    `kubectl get all command
+ 
+ ![get-all](https://user-images.githubusercontent.com/101070055/232307825-dd230363-2b3c-44de-9520-74e40891d9f8.png)
+
+To reach the webapp from browser 
+
+     minikube ip   >>> display minikube cluster IP
+     kubectl get svc  >> display service, and the webapp is reachable on port 30010
+     http://<minikube cluster ip>:30010
+
+The webapp view 
+
+![web-app](https://user-images.githubusercontent.com/101070055/232308370-da7c37bc-91d9-4e9c-81f5-3fe9b88918ad.png)
 
