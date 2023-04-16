@@ -25,6 +25,12 @@ they have given me information about the application and how it should work, i h
 
 ## Helm Chart.
 
+## StateFullSet
+
+## DaemonSet
+
+## CPU Request and limits & (HPA) >> Horizontal Pod AutoScaling
+
 ## Images
   - jmcglobal/track-tracker:release1, release2, release3
   
@@ -43,6 +49,7 @@ they have given me information about the application and how it should work, i h
 
 ![kubernetes](https://user-images.githubusercontent.com/101070055/232293027-73c3b171-b1ae-48cc-865c-583f8e2fad54.png)
 
+am available on :
 
-
+Mmadubugwuchibuife@gmail.com
 
