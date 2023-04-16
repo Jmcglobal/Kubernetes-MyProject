@@ -126,7 +126,8 @@ As it display above, the cluster is now ready.
 
 ![up-kops](https://user-images.githubusercontent.com/101070055/232330402-838be8a9-bd54-4214-add0-4a8aeeb130a9.png)
 
-Be ware those nodes are proected by Auto scaling group, so that if by any reason one of node crash, auto scaling will rescheduled the instance.
+Be ware those nodes are being protected by Auto scaling group, so that if by any reason one of node crash, auto scaling will rescheduled the instance.
 
 And also, Target group and loadbalancer will be automatically be created for communication between master and nodes .
-      
+
+I can now run kubectl command to deploy, troubleshoot and anallyse microservice.
