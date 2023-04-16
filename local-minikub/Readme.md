@@ -35,5 +35,40 @@ install minikube
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
-Install Kubectl
+Install Kubectl >>> follow the link below
+
+        https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+To startup the minikube 
+
+        minikube start --memory 4096 --driver=docker
+        
+## Referance command to run deeploy and troubleshoot in kubernetes 
+
+       minikube status  >> status of minikube
+       minikube stop  >> stop minikube service
+       minikube ip >> display minikube IP
+       minikube dashboard >> display minikube GUI interface
+
+Basic Kubectl Commands to diagonise and troubleshhot 
+
+      kubectl get pod  >> display pods on default namespace
+      kubectl get deployment >> display deployment default namespace
+      kubectl get service  >> Display service on default namespace
+      kubectl get sc   >> display storage class on kubernetes  (storageClass)
+      kubectl get pv  >> display persistent volume     (persistentVolume)
+      kubectl get pvc   >> display persistent volume claim  (persistentVolumeClaim)
+      kubetl get rs >> display replicaset   (replicaSet)
+      kubectl describe <pod/service/deployment/rs/pv/pvc/sc> <name>  >> To view detailed information about the objects
+      kubectl logs <pod name> >> to view detailed logs of the pod
+      kubectl get all  >> get all objects on default namespace
+      
+Deployment Basic kubectl commands
+
+   kubectl apply -f .   >> apply every yaml file on the current directory to kubernetes
+   kubectl apply -f <yaml file>  
+   kubectl delete -f . >> delete from kubernetes every configuration on yaml file
+   kubectl delete -f <yaml file> apply per yaml file
+
+`
 
