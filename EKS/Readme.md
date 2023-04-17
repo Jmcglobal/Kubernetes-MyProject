@@ -78,44 +78,44 @@ Command to deploy ebs-csi driver
               --role-only \
               --role-name <enter-preffered role name>
 
-To add the Amazon EBS CSI add-on using eksctl
+- To add the Amazon EBS CSI add-on using eksctl
 
             eksctl create addon --name aws-ebs-csi-driver --cluster <cluster-name> --service-account-role-arn arn:aws:iam::<account-id>:role/<role-name> --force
             
 Updating the Amazon EBS CSI driver as an Amazon EKS add-on
 
-Check the current version of my Amazon EBS CSI add-on using eksctl
+- Check the current version of my Amazon EBS CSI add-on using eksctl
 
             eksctl get addon --name aws-ebs-csi-driver --cluster <cluster-name>
 
-Update the add-on to the version returned under UPDATE AVAILABLE in the output 
+- Update the add-on to the version returned under UPDATE AVAILABLE in the output 
 
           eksctl update addon --name aws-ebs-csi-driver --version <ebs-addon-version e.g v1.17.0-eksbuild.1> --cluster <cluster-name> --force
       
-Removing the Amazon EBS CSI add-on "eksctl command'
+- Removing the Amazon EBS CSI add-on "eksctl command'
 
             eksctl delete addon --cluster <cluster-name> --name aws-ebs-csi-driver --preserve
       
 # Ebs-csi addon using aws cli
 
-View cluster's OIDC provider URL
+- View cluster's OIDC provider URL
 
-aws eks describe-cluster \
-  --name <cluster-name> \
-  --query "cluster.identity.oidc.issuer" \
-  --output text
+            aws eks describe-cluster \
+              --name <cluster-name> \
+              --query "cluster.identity.oidc.issuer" \
+              --output text
 
-Sample output
+- Sample output
       
       https://oidc.eks.region-code.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE
       OIDC provider URL ID is "EXAMPLED539D4633E53DE1B71EXAMPLE"
 
-Create a .json file and edit it with text editor example " touch ebs-csi.json"
+- Create a .json file and edit it with text editor example " touch ebs-csi.json"
       
       touch ebs-csi.json
       vim ebs-csi.json
       
-Paste this code and edit it,
+- Paste this code and edit it,
       
                   {
               "Version": "2012-10-17",
@@ -138,33 +138,33 @@ Paste this code and edit it,
    
 save and exit
       
-Create the role .
-      
-            aws iam create-role \
-              --role-name <role-name> \
-              --assume-role-policy-document file://"<json-file-name e.g ebs-csi.json>"
+- Create the role .
 
-Attach the required AWS managed policy to the role with the following command   
+                  aws iam create-role \
+                    --role-name <role-name> \
+                    --assume-role-policy-document file://"<json-file-name e.g ebs-csi.json>"
+
+- Attach the required AWS managed policy to the role with the following command   
       
-            aws iam attach-role-policy \
-              --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
-              --role-name <created-role-name>
+                        aws iam attach-role-policy \
+                          --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+                          --role-name <created-role-name>
  
-Annotate the ebs-csi-controller-sa Kubernetes service account with the ARN of the IAM role
+- Annotate the ebs-csi-controller-sa Kubernetes service account with the ARN of the IAM role
+
+                  kubectl annotate serviceaccount ebs-csi-controller-sa \
+                      -n kube-system \
+                      eks.amazonaws.com/role-arn=arn:aws:iam::<account-id>:role/<role-name>
       
-            kubectl annotate serviceaccount ebs-csi-controller-sa \
-                -n kube-system \
-                eks.amazonaws.com/role-arn=arn:aws:iam::<account-id>:role/<role-name>
-      
-Restart the ebs-csi-controller deployment for the annotation to take effect.
+- Restart the ebs-csi-controller deployment for the annotation to take effect.
       
             kubectl rollout restart deployment ebs-csi-controller -n kube-system
       
-To add the Amazon EBS CSI add-on using the AWS CLI   
+- To add the Amazon EBS CSI add-on using the AWS CLI   
       
-            aws eks create-addon --cluster-name <cluster-name> --addon-name aws-ebs-csi-driver \
-        --service-account-role-arn arn:aws:iam::<account-id>:role/<role-name>
+                        aws eks create-addon --cluster-name <cluster-name> --addon-name aws-ebs-csi-driver \
+                    --service-account-role-arn arn:aws:iam::<account-id>:role/<role-name>
 
-o remove the Amazon EBS CSI add-on using the AWS CLI      
+- To remove the Amazon EBS CSI add-on using the AWS CLI      
 
-aws eks delete-addon --cluster-name my-cluster --addon-name aws-ebs-csi-driver --preserve
+            aws eks delete-addon --cluster-name my-cluster --addon-name aws-ebs-csi-driver --preserve
