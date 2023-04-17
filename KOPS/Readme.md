@@ -131,3 +131,28 @@ Be ware those nodes are being protected by Auto scaling group, so that if by any
 And also, Target group and loadbalancer will be automatically be created for communication between master and nodes .
 
 I can now run kubectl command to deploy, troubleshoot and anallyse microservice.
+
+- To delete KOPS Cluster.
+
+                echo ${NAME}  >> The cluster name evironment variable
+                echo ${KOPS_STATE_STORE} >> bucket storage that holds all kops running data and config
+                kops delete cluster ${NAME} --yes
+                
+Whereby the cluster and storage environment variable is lost or not showing when echo command is used, then recreate them again
+
+      export NAME=kopscluster.k8s.local
+      export KOPS_STATE_STORE=s3://kops-bucket-jmc
+      
+With the delete command, it will delete all the cluster and every components it deployed.
+
+- To restart the cluster back.
+
+You must follow the previous step starting from setting the cluster name and storage environment variable.
+
+
+
+
+Am available on via Email for any enquiry ..
+
+Mmadubugwuchibuife@gmail.com
+                
