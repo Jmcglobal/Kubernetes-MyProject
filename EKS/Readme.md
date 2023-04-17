@@ -11,6 +11,55 @@ This is a simple CLI tool for creating cluster on EKS - Amazon's new managed kub
 
 # Configuring & deploying EKS using eksctl.
 
+      EC2 bootstrapping instance
+      awscli version 2
+      eksctl installation
+      eks user and permissions
+      kubectl
+
 Just like KOPS am going to use BootStrapping instance, by launching ubuntu EC2 instance.
 
+![eks-bbot](https://user-images.githubusercontent.com/101070055/232343031-114005d2-179b-4c16-b22c-a976bc5d3f17.png)
+
+Install eksctl
+
+      curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      sudo mv /tmp/eksctl /usr/local/bin
+      eksctl version
+
+Install awscli
+
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+     
+Create eks user and permissios, to keep it simple i use below permissions
+
+      AmazonEC2FullAccess
+      IAMFullAccess
+      CloudFormationFullAccess
+      Systems Manager (Limited: Read & List)
+      EKSFullAccess  {create a policy and enable all Access}
+
+Create eks user access key and as well use aws configure to authencticate to configure it
+
+Install kubectl command
+
+        curl -LO https://dl.k8s.io/release/v1.27.0/bin/linux/amd64/kubectl
+        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+        kubectl version --output=yaml
+        
+![kubctl-v](https://user-images.githubusercontent.com/101070055/232347209-d2ac6177-99fd-40e3-adac-5d57809d18c5.png)
+        
+I will be deploying the cluster on aws region us-east-2 
+
+Create Cluster
+
+        eksctl create cluster --name eks-cluster --nodes-min=3
+
+![eks-cluster-up](https://user-images.githubusercontent.com/101070055/232351388-9ffc0372-587a-4d9a-af9d-fc9e641a5fba.png)
+
+![eks-node](https://user-images.githubusercontent.com/101070055/232351218-b1d6aee4-f317-4e53-b895-360c8340d2da.png)
+
+To use EBS Volume as persistent volume in EKS, i need to install EBS-CSI-Driver with required permissions as addons inside the cluster.    
 
