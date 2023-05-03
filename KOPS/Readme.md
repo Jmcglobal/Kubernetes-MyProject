@@ -96,7 +96,7 @@ To edit cluster configuration details,
 list clusters and instance groups created be default
 
         kops get cluster
-        kops get ig --name {NAME}
+        kops get ig --name ${NAME}
 
 ![kops-cluster](https://user-images.githubusercontent.com/101070055/232327298-fff2993d-9194-481d-8434-92d4b0c09cc7.png)
 
