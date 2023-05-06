@@ -168,7 +168,7 @@ E.g  kops create cluster --name=kopscluster.k8s.local --state=s3://kopscluster-s
                
 ### Build the cluster
         
-                kops update cluster <cluster name> --yes
+                kops update cluster <cluster name> --yes --admin=100000h
                 
 ### Set Environment variable , cluster name and bucket name
 
