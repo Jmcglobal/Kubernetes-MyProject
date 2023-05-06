@@ -159,7 +159,9 @@ You must follow the previous step starting from setting the cluster name and sto
 #### Create a KOPS Cluster
         
                 kops create cluster --name=<enter-cluster-name>.k8s.local --state=s3://<bucket-name> --zones=<availability-zone name> --node-count=1 --node-size=t2.micro --master-size=t2.micro --master-volume-size=8 --node-volume-size=8
-        
+
+E.g  kops create cluster --name=kopscluster.k8s.local --state=s3://kopscluster-state --zones=us-east-2a,us-east-2b,us-east-2c --node-count=3 --node-size=t2.micro --master-size=t3.medium --master-volume-size=10 --node-volume-size=10
+
 ### Edit Cluster Configuration
         
                 kops edit cluster <cluster name>
