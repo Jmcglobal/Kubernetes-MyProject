@@ -73,6 +73,8 @@ Create S3 bucket
         
 ## Set up the cluster
 
+NOTE: Here i am using k8s.local  >> local domain, i can as well use public domain on aws Route53
+
 Create Evironment varibale
 
       export NAME=kopscluster.k8s.local
@@ -172,7 +174,7 @@ You must follow the previous step starting from setting the cluster name and sto
                 export NAME=<cluster-name>.k8s.local
         
 ### Experiment with few commands
-
+                kops validate cluster --wait 3m --count=2
                 kops get cluster
                 kops get ig --name $NAME
                 kops edit cluster $NAME
