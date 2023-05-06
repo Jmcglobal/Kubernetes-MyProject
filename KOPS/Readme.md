@@ -44,7 +44,6 @@ Install kubectl
 
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 Check kubectl version
 
@@ -149,8 +148,27 @@ With the delete command, it will delete all the cluster and every components it 
 
 You must follow the previous step starting from setting the cluster name and storage environment variable.
 
+## CREATE KOPS CLUSTER USING A FEW LINES OF COMMAND
 
+#### Create an S3 Bucket
 
+                aws s3api create-bucket --bucket <enter-bucket-name> --region <Enter-your-chosen-aws-region>
+        
+#### Create a KOPS Cluster
+        
+                kops create cluster --name=<enter-cluster-name>.k8s.local --state=s3://<bucket-name> --zones=<availability-zone name> --node-count=1 --node-size=t2.micro --master-size=t2.micro --master-volume-size=8 --node-volume-size=8
+        
+### Edit Cluster Configuration
+        
+                kops edit cluster <cluster name>
+        
+### Build the cluster
+        
+                kops update cluster <cluster name> --yes
+        
+The Kops Cluster will be created, and you can see the whole configuration on aws environment, Autoscaling, targets grropu, loadbalancer, and EC2 instances for nodes and master. the configurtaion state files is stored on s3 bucket.
+        
+### To deploy microservices, ensure kubectl is installed as well
 
 Am available on via Email for any enquiry ..
 
