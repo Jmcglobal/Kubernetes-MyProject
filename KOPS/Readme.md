@@ -161,10 +161,23 @@ You must follow the previous step starting from setting the cluster name and sto
 ### Edit Cluster Configuration
         
                 kops edit cluster <cluster name>
-        
+               
 ### Build the cluster
         
                 kops update cluster <cluster name> --yes
+                
+### Set Environment variable , cluster name and bucket name
+
+                export KOPS_STATE_STORE=s3://<bucket-name>
+                export NAME=<cluster-name>.k8s.local
+        
+### Experiment with few commands
+
+kops get cluster
+kops get ig --name $NAME
+kops edit cluster $NAME
+
+
         
 The Kops Cluster will be created, and you can see the whole configuration on aws environment, Autoscaling, targets grropu, loadbalancer, and EC2 instances for nodes and master. the configurtaion state files is stored on s3 bucket.
         
