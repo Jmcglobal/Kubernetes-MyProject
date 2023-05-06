@@ -173,9 +173,9 @@ You must follow the previous step starting from setting the cluster name and sto
         
 ### Experiment with few commands
 
-kops get cluster
-kops get ig --name $NAME
-kops edit cluster $NAME
+                kops get cluster
+                kops get ig --name $NAME
+                kops edit cluster $NAME
 
 
         
