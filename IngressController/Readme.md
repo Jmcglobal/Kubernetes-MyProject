@@ -44,7 +44,7 @@ There is no much difference implementing ingress controller while running KOPS o
 
 - Use kubectl command to apply it inside the cluster
 
-kubectl apply -f deploy.yaml
+         kubectl apply -f deploy.yaml
 
 - Then apply your ingress rule
 
