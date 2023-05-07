@@ -33,3 +33,24 @@ With ingress controller kuberentes administrators can implement host based, path
          kubectl apply -f minikube-ingress-rule.yaml
          
 - Depending on the number of pods service running inside the cluster you wish to access from the internet, you can configure multiple rules or path based routing to access those pods.
+
+## AWS INGRESS CONTROLLER
+
+There is no much difference implementing ingress controller while running KOPS or EKS with AWS, all you need to do is to download and apply ingress controller inside the cluster. It will provision loadbalancer along with ingress 
+
+- Download Ingress Controller
+
+         wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/aws/deploy.yaml
+
+- Use kubectl command to apply it inside the cluster
+
+kubectl apply -f deploy.yaml
+
+- Then apply your ingress rule
+
+         kubectl apply -f aws-ingress-rule.yaml
+         
+### To see nginx config overview
+
+         kubectl exec -it -n ingress-nginx deploy/ingress-nginx-controller cat /etc/nginx/nginx.conf
+       
