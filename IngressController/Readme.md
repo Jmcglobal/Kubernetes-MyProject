@@ -34,7 +34,7 @@ With ingress controller kuberentes administrators can implement host based, path
          
 - Depending on the number of pods service running inside the cluster you wish to access from the internet, you can configure multiple rules or path based routing to access those pods.
 
-## AWS INGRESS CONTROLLER
+## AWS KOPS/EKS INGRESS CONTROLLER
 
 There is no much difference implementing ingress controller while running KOPS or EKS with AWS, all you need to do is to download and apply ingress controller inside the cluster. It will provision loadbalancer along with ingress 
 
