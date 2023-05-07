@@ -16,3 +16,20 @@ With ingress controller kuberentes administrators can implement host based, path
 ##### path: /apple       >>> This is example of path based routing
 ##### host: book.jmcglobal.com    >>> Example of host based routing
 
+### SETTING UP INGRESS CONTROLLER ON MINIKUBE
+
+- Enable ingress addons inside the cluster with 
+
+         minikube addons enable ingress
+         
+- On ubuntu local machine set up local domain-name
+         sudo vim /etc/hosts
+- Then paste the minikube ip, and enter any unregistered local domain-name which will be used as host on kubernetes ingress rule
+
+         192.168.10.1    jmcglobal-tech.net
+
+- Apply configure and apply ingress rule 
+
+         kubectl apply -f minikube-ingress-rule.yaml
+         
+- Depending on the number of pods service running inside the cluster you wish to access from the internet, you can configure multiple rules or path based routing to access those pods.
