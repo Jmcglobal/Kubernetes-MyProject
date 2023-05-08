@@ -1,3 +1,14 @@
+# KUBERNETES
+
+![kub-overview](https://user-images.githubusercontent.com/101070055/236711116-d5096f64-cb58-4e26-9838-dda37ce37693.png)
+
+### What is Kubernetes?
+Kubernetes is open source orchestration platform for containerized application. It is used for deployment,auto-scaling and management of container application.
+
+Read... more https://cloudwithease.com/what-is-kubernetes/
+
+
+
 ## Kubernetes project:
 - Kubernetes on minikube on local directory
 - Kubernetes using KOPS refer to KOPS directory
