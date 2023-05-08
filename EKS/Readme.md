@@ -56,6 +56,10 @@ I will be deploying the cluster on aws region us-east-2
 Create Cluster
 
         eksctl create cluster --name eks-cluster --nodes-min=3
+        
+Create Cluster Specifying node types
+
+            eksctl create cluster --name eks-cluster --nodes-min=3 --nodes-max=5 --node-type=t3.medium
 
 ![eks-cluster-up](https://user-images.githubusercontent.com/101070055/232351388-9ffc0372-587a-4d9a-af9d-fc9e641a5fba.png)
 
