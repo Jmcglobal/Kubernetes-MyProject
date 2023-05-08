@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aws-ingress-rule
+  annotations:
+    kubernetes.io/ingress.class.nginx
+spec:
+  rules:
+  - host: jmcglobal.net
+    http:
+      paths:
+        path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webapp
+            port:
+              number: 80
+
+## To add another host using sub domain
+#   - host: card.global.net
+#     http:
+#       paths: 
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: portfolio
+#             port:
+#               number: 8080
+# # # Adding path based routing
+#       paths:
+#       - path: /app
+#         pathType: Prefix
+#         backend: 
+#           service:
+#             name: blog
+#             port:
+#               number: 3000

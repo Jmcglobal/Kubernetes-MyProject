@@ -1,0 +1,38 @@
+# Ingress Controller
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-rule
+spec:
+  rules:
+  - host: global.net    ## Enter local or domain name, depending which kubernetes provider you are using
+    http:      ## It can be https if you have SSL termination
+      paths: 
+      - path: /       ## you can configure path based routing as well with, /apple is exam of path based routing, users can access it with global.net/apple
+        pathType: Prefix
+        backend:
+          service:
+            name: webapp    ## Enter conatiner service name
+            port:
+              number: 80   ## Port number of the container service
+
+## To add another host using sub domain
+#   - host: card.global.net
+#     http:
+#       paths: 
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: portfolio
+#             port:
+#               number: 8080
+# # # Adding path based routing
+#       paths:
+#       - path: /app
+#         pathType: Prefix
+#         backend: 
+#           service:
+#             name: blog
+#             port:
+#               number: 3000
