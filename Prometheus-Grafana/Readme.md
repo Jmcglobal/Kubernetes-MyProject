@@ -48,4 +48,22 @@ Ensure kubernetes cluster is up and running and as well install heml command (he
 
 ![get-all](https://github.com/Jmcglobal/Kubernetes-MyProject/assets/101070055/1c755221-d606-4b5c-a7ee-28b2d144e95c)
 
+- Expose Prometheus Server Service
+
+To access Prometheus web interface, the server service needs to be exposed, it can be done with ingress controller, NodePort service type or LoadBalancer service type.
+
+                kubectl edit svc prometheus-server
+
+Scroll down on service type, and change it to loadbalaner or NodePort, if you have ingress controller inside the cluster, simply configure host and path for Prometheus-Server
+
+- Another way to expose prometheus-Server service
+
+        kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-svc
+
+![prom-svc](https://github.com/Jmcglobal/Kubernetes-MyProject/assets/101070055/f7f05675-1c20-418c-9e43-0d2e6223f2bc)
+
+Access the Prometheus UI using http://<minikube-IP/Node-IP/Loadbalancer:31196.
+
+But if you are using an ingress controller, simple enter the prometheus server service host name.
+
 
