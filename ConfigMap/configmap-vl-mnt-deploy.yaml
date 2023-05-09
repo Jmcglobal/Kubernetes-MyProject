@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apps
+  template:
+    metadata:
+      labels:
+        app: apps
+    spec:
+      containers:
+      - name: front-end
+        image: jmcglobal/python-app:latest
+        ### Referencing environment varibale from configmap with Volume Mounts
+        ## It will mount configmap value as file
+        volumeMounts:
+        - name: db-connect-url
+          mountPath: /opt
+        ports:
+        - containerPort: 8000
+      volumes:
+      - name: db-connect-url
+        configMap:
+          name: db-string

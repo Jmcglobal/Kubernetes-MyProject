@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-string
+data: 
+  database.url: "https://deserver.global.com:3306"
+
+
+## you can use any key of your choice instead of database url, i can pass "url" as key
