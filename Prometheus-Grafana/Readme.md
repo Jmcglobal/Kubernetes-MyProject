@@ -64,6 +64,28 @@ Scroll down on service type, and change it to loadbalaner or NodePort, if you ha
 
 Access the Prometheus UI using http://<minikube-IP/Node-IP/Loadbalancer:31196.
 
+![prom-interface](https://github.com/Jmcglobal/Kubernetes-MyProject/assets/101070055/4d2d84c9-2829-4afe-8517-eeaabac22f13)
+
 But if you are using an ingress controller, simple enter the prometheus server service host name.
 
+
+## Install Grafana Using helm
+
+- Add grafana helm repo
+
+                helm repo add grafana https://grafana.github.io/helm-charts
+                helm repo update
+                helm install grafana grafana/grafana
+
+- Get grafana Password to access it
+
+                kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+- Expose Grafana Service
+
+                kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-svc
+
+_ Access the grafana UI using Loadbalancer, Server-Ip or Minikube IP with the exposed port number
+
+![grafana](https://github.com/Jmcglobal/Kubernetes-MyProject/assets/101070055/07860692-09c4-4bc8-a286-676d65697638)
 
