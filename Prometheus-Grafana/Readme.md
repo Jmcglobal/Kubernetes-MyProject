@@ -89,3 +89,21 @@ _ Access the grafana UI using Loadbalancer, Server-Ip or Minikube IP with the ex
 
 ![grafana](https://github.com/Jmcglobal/Kubernetes-MyProject/assets/101070055/07860692-09c4-4bc8-a286-676d65697638)
 
+PULL A CHART
+
+always use a artifacthub.io
+
+helm Uninstall helm. helm uninstall
+
+Show values with,
+
+helm show values <repo-name>/<stack-name> > values.yaml
+
+helm install <any-name> <repo-name/stack name>
+
+helm pull <repo-name>/<stack-name> --untar=true
+
+deploy to cluster ===
+
+helm template <name> . --values=values.yaml > <name.yaml>
+
